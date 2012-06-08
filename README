@@ -35,3 +35,9 @@ bruno.leon@unyonsys.com
 === Examples
 
  class { keepalived: }
+ keepalived::instance { '50':
+   interface         => 'eth0',
+   virtual_ips       => [ '192.168.200.17 dev eth0' ],
+   state             => hiera( "keepalived_50_state" ),
+   priority          => hiera( "keepalived_50_priority" ),
+ }
