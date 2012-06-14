@@ -9,13 +9,14 @@ define keepalived::instance (
   $notify_fault  = undef,
   $smtp_alert    = false,
 ) {
-  Class[ 'keepalived' ] -> Keepalived::Instance[ $name ]
-  #Keepalived::Instance[ $name ] ~> Class[ 'keepalived::service' ]
+
+  include keepalived::variables
 
   concat::fragment { "keepalived_${name}":
     target  => $keepalived::variables::keepalived_conf,
     content => template( 'keepalived/keepalived_instance.erb' ),
     order   => '50',
     notify  => Class[ 'keepalived::service' ],
+    require => Class[ 'keepalived::install' ],
   }
 }
