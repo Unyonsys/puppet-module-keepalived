@@ -1,6 +1,9 @@
 vrrp_instance <%=  @name %> {
   virtual_router_id <%= @name %>
 
+  # Advert interval
+  advert_int <%= @advert_int %>
+
   # for electing MASTER, highest priority wins.
   priority  <%= @priority %>
   state     <%= @state %>
