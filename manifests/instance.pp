@@ -3,6 +3,7 @@ define keepalived::instance (
   $virtual_ips,
   $state,
   $priority,
+  $track_script  = [],
   $notify        = undef,
   $notify_master = undef,
   $notify_backup = undef,
@@ -12,6 +13,8 @@ define keepalived::instance (
 ) {
 
   include keepalived::variables
+
+  Keepalived::Vrrp_script[ $track_script ] -> Keepalived::Instance[ $name ]
 
   concat::fragment { "keepalived_${name}":
     target  => $keepalived::variables::keepalived_conf,

@@ -1,4 +1,4 @@
-vrrp_instance <%=  @name %> {
+vrrp_instance <%= @name %> {
   virtual_router_id <%= @name %>
 
   # Advert interval
@@ -11,11 +11,15 @@ vrrp_instance <%=  @name %> {
   interface <%= @interface %>
 
   virtual_ipaddress {
-    <% @virtual_ips.each do |vip| -%>
-    <%= vip %>
-    <% end %>
-  }
-
+  <% @virtual_ips.each do |vip| -%>
+  <%= vip %>
+  <% end %>}
+  <% if @track_script.length > 0 then %>
+  track_script {
+  <% @track_script.each do |script| -%>
+  <%= script %>
+  <% end %>}
+  <% end -%>
   <% if @notify then -%>notify <%= @notify %><% end %>
   <% if @notify_master then -%>notify_master <%= @notify_master %><% end %>
   <% if @notify_backup then -%>notify_backup <%= @notify_backup %><% end %>
