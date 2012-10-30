@@ -9,3 +9,8 @@ global_defs {
   smtp_connect_timeout <%= @smtp_connect_timeout %>
   router_id <%= @router_id %>
 }
+vrrp_script chk_haproxy {         # Requires keepalived-1.1.13
+  script "killall -0 haproxy"     # cheaper than pidof
+  interval 2                      # check every 2 seconds
+  weight 2                        # add 2 points of prio if OK
+ }

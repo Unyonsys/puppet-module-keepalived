@@ -4,15 +4,15 @@ vrrp_instance <%=  @name %> {
   # for electing MASTER, highest priority wins.
   priority  <%= @priority %>
   state     <%= @state %>
-
   interface <%= @interface %>
-
   virtual_ipaddress {
     <% @virtual_ips.each do |vip| -%>
     <%= vip %>
     <% end %>
   }
-
+  track_script {
+       chk_haproxy
+  }
   <% if @notify then -%>notify <%= @notify %><% end %>
   <% if @notify_master then -%>notify_master <%= @notify_master %><% end %>
   <% if @notify_backup then -%>notify_backup <%= @notify_backup %><% end %>
