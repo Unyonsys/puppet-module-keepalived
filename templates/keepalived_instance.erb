@@ -8,8 +8,14 @@ vrrp_instance <%=  @name %> {
   interface <%= @interface %>
 
   virtual_ipaddress {
-    <% @virtual_ips.each do |vip| -%>
-    <%= vip %>
+    <% if @virtual_ips.is_a? Hash then %>
+        <% @virtual_ips.each do |vip, label| -%>
+            <%= vip -%> label <%= @interface -%>:<%= label %>
+        <% end %>
+    <% else %>
+        <% @virtual_ips.each do |vip| -%>
+            <%= vip -%>
+        <% end %>
     <% end %>
   }
 
