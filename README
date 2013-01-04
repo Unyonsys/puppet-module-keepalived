@@ -32,12 +32,21 @@ bruno.leon@unyonsys.com
 [*$keepalived::variables::keepalived_conf*]
   Path to keepalived.conf configuration file
 
-=== Examples
-
+=== Example
+#Primary Node
  class { keepalived: }
  keepalived::instance { '50':
    interface         => 'eth0',
    virtual_ips       => [ '192.168.200.17 dev eth0' ],
-   state             => hiera( "keepalived_50_state" ),
-   priority          => hiera( "keepalived_50_priority" ),
+   state             => MASTER,
+   priority          => 101,
+ }
+
+#Backup Node
+ class { keepalived: }
+ keepalived::instance { '50':
+   interface         => 'eth0',
+   virtual_ips       => [ '192.168.200.17 dev eth0' ],
+   state             => BACKUP,
+   priority          => 100,
  }
