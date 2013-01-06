@@ -11,15 +11,15 @@ vrrp_instance <%= @name %> {
   interface <%= @interface %>
 
   virtual_ipaddress {
-    <% if @virtual_ips.is_a? Hash then %>
-        <% @virtual_ips.each do |vip, label| -%>
-            <%= vip -%> label <%= @interface -%>:<%= label %>
-        <% end %>
-    <% else %>
-        <% @virtual_ips.each do |vip| -%>
-            <%= vip -%>
-        <% end %>
-    <% end %>
+  <% if @virtual_ips.is_a? Hash then %>
+  <% @virtual_ips.each do |vip, label| -%>
+    <%= vip -%> label <%= @interface -%>:<%= label %>
+  <% end %>
+  <% else %>
+  <% @virtual_ips.each do |vip| -%>
+    <%= vip %>
+  <% end %>
+  <% end %>
   }
   <% if @track_script.length > 0 then %>
   track_script {
