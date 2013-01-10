@@ -3,13 +3,14 @@ define keepalived::instance (
   $virtual_ips,
   $state,
   $priority,
-  $track_script  = [],
-  $notify        = undef,
-  $notify_master = undef,
-  $notify_backup = undef,
-  $notify_fault  = undef,
-  $smtp_alert    = false,
-  $advert_int    = '1',
+  $track_script          = [],
+  $notify                = undef,
+  $notify_master         = undef,
+  $notify_backup         = undef,
+  $notify_fault          = undef,
+  $smtp_alert            = false,
+  $advert_int            = '1',
+  $virtual_router_id     = $name,
 ) {
 
   include keepalived::variables
