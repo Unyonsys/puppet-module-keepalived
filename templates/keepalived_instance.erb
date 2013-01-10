@@ -27,6 +27,12 @@ vrrp_instance <%= @name %> {
   <%= script %>
   <% end %>}
   <% end -%>
+  <% if @auth_type and @auth_pass then %>
+  authentication {
+    auth_type <%= @auth_type %>
+    auth_pass <%= @auth_pass %>
+  }
+  <% end -%>
 
   <% if @notify then -%>notify <%= @notify %><% end %>
   <% if @notify_master then -%>notify_master <%= @notify_master %><% end %>

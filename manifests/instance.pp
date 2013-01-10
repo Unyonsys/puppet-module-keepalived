@@ -10,6 +10,8 @@ define keepalived::instance (
   $notify_fault  = undef,
   $smtp_alert    = false,
   $advert_int    = '1',
+  $auth_type     = undef,
+  $auth_pass     = undef,
 ) {
 
   include keepalived::variables
