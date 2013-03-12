@@ -13,7 +13,12 @@ define keepalived::instance (
   $auth_type         = undef,
   $auth_pass         = undef,
   $virtual_router_id = $name,
+  $virtual_routes    = [],
 ) {
+
+  validate_array( $virtual_ips,
+    $track_script,
+    $virtual_routes )
 
   include keepalived::variables
 
