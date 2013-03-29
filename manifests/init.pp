@@ -59,4 +59,7 @@ class keepalived (
     router_id               => $keepalived::router_id,
   }
   class { "${module_name}::service": }
+
+  $keepalived_instance = hiera('keepalived::instance', {} )
+  create_resources('keepalived::instance', $keepalived_instance )
 }
