@@ -4,6 +4,7 @@ class keepalived::config (
   $smtp_server,
   $smtp_connect_timeout,
   $router_id,
+  $static_ipaddress
 ) {
 
   concat { $keepalived::variables::keepalived_conf:

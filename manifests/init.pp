@@ -45,6 +45,7 @@ class keepalived (
   $smtp_server             = 'localhost',
   $smtp_connect_timeout    = '30',
   $router_id               = $::hostname,
+  $static_ipaddress        = [],
 ) {
 
   Class[ "${module_name}::install" ] -> Class[ "${module_name}::config" ] ~> Class[ "${module_name}::service" ]
@@ -57,6 +58,7 @@ class keepalived (
     smtp_server             => $keepalived::smtp_server,
     smtp_connect_timeout    => $keepalived::smtp_connect_timeout,
     router_id               => $keepalived::router_id,
+    static_ipaddress        => $keepalived::static_ipaddress,
   }
   class { "${module_name}::service": }
 }
