@@ -15,7 +15,7 @@ bruno.leon@unyonsys.com
 [*notification_email_to*] = [ "root@${domain}" ]
   An array of emails to send notifications to
 
-[*notification_from*] = "keepalived@${domain}"
+[*notification_email_from*] = "keepalived@${domain}"
   The source adress of notification messages
 
 [*smtp_server*] = 'localhost'
