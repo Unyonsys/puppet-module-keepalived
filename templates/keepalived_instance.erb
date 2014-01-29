@@ -16,7 +16,7 @@ vrrp_instance <%= @name %> {
     <%= vip -%> label <%= @interface -%>:<%= label %>
   <% end %>
   <% else %>
-  <% @virtual_ips.each do |vip| -%>
+  <% @virtual_ips.uniq.each do |vip| -%>
     <%= vip %>
   <% end %>
   <% end %>
