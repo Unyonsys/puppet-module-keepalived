@@ -41,3 +41,10 @@ bruno.leon@unyonsys.com
    state             => hiera( "keepalived_50_state" ),
    priority          => hiera( "keepalived_50_priority" ),
  }
+
+=== Developement
+
+You can run the test-suite with the following commands:
+
+    bundle exec rake spec
+    bundle exec rake lint
