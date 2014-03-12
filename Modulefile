@@ -7,4 +7,4 @@ description 'Manage keepalived instances'
 project_page 'https://github.com/Unyonsys/puppet-module-keepalived/'
 
 ## Add dependencies, if any:
-# dependency 'puppet/concat', '>= 0.0.1'
+dependency 'puppetlabs/concat', '>=1.0.0 <2.0.0'
