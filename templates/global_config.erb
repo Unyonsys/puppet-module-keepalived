@@ -1,6 +1,6 @@
 global_defs {
   notification_email {
-  <% notification_email_to.each do |email| -%>
+  <% @notification_email_to.each do |email| -%>
   <%= email %>
   <% end -%>}
   notification_email_from <%= @notification_email_from %>
