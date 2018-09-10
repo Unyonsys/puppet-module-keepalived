@@ -22,6 +22,12 @@
 # [*router_id*] = $::hostname
 #   The router_id identifies us on the network.
 #
+# [*dynamic_interfaces*] = false
+#   Allow configuration to include interfaces that don't exist at startup.
+#   This allows keepalived to work with interfaces that may be deleted and
+#   restored. It also allows virtual and static routes and rules on VMAC
+#   interfaces.
+#
 # === Variables
 #
 # [*$keepalived::variables::keepalived_conf*]
@@ -46,6 +52,7 @@ class keepalived (
   $smtp_connect_timeout    = '30',
   $router_id               = $::hostname,
   $static_ipaddress        = [],
+  $dynamic_interfaces      = false,
 ) {
 
   Class[ "${module_name}::install" ] ->
@@ -61,6 +68,7 @@ class keepalived (
     smtp_connect_timeout    => $keepalived::smtp_connect_timeout,
     router_id               => $keepalived::router_id,
     static_ipaddress        => $keepalived::static_ipaddress,
+    dynamic_interfaces      => $keepalived::dynamic_interfaces,
   }
   include "${module_name}::service"
 
