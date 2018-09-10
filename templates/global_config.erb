@@ -7,6 +7,9 @@ global_defs {
   smtp_server <%= @smtp_server %>
   smtp_connect_timeout <%= @smtp_connect_timeout %>
   router_id <%= @router_id %>
+<% if @dynamic_interfaces -%>
+  dynamic_interfaces
+<% end -%>
 }
 
 static_ipaddress {
